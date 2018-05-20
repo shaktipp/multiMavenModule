@@ -36,7 +36,7 @@
 
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.tests>src/test</sonar.tests>
-		<sonar.sources>pom.xml,src/main/java,src/main/resources,src/test/resources/features</sonar.sources>
+		<sonar.sources>pom.xml,src/main/java,src/test/resources/features</sonar.sources>
 		<!-- Below property indicates the pattern of the test suite -->
 		<runSuite>**/*Test.class</runSuite>
 		<!-- Sonar-JaCoCo properties -->
