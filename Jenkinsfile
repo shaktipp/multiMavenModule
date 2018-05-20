@@ -26,10 +26,14 @@ pipeline {
 				git url: v_githubUrl, branch: v_branchName
 			}
 		}
-		stage('Compile2Docker Push') {
-			steps {
-				sh "mvn install -DskipITs"
-			}
+		stage('Compile2Docker Push'){
+            try{
+                    sh "mvn install -DskipITs"
+            }
+            catch(err){
+                currentBuild.result = 'UNSTABLE'
+                throw err
+            }
 		}
        
 		
