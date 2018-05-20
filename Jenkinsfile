@@ -4,8 +4,8 @@ def v_branchName = 'develop'
 def v_cucumberReportPath = '*/**/target/cucumber.json'
 def v_junitReportPath = '*/**/target/surefire-reports/*.xml'
 def v_htmlReportPath = 'target/site/jacoco/'
-def v_successNotification = 'shaktiprasadapanda@fico.com,abhinavgupta@fico.com';
-def v_failNotification = 'shaktiprasadapanda@fico.com,abhinavgupta@fico.com';
+def v_successNotification = 'shaktiprasadapanda@fico.com,shaktipp@gmail.com';
+def v_failNotification = 'shaktiprasadapanda@fico.com,shaktipp@gmail.com';
 
 
 //////////////////////////////////////////////////////////////////////PLEASE DONT MODIFY BELOW SCRIPT   ////////////////////////////////////////////////////////////////////////////
