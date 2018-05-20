@@ -1,0 +1,45 @@
+{
+  "kind": "component",
+  "name": "MathCucumberApp-component",
+  "description": "MathCucumberApp component is used for all Math operation",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "kind": "engine",
+      "type": "docker",
+      "env": ["design"],
+      "scale": false,
+      "disableAutoScaling": true,
+      "additionalStorage": 0,
+      "exclude": [],
+      "envVars": {},
+      "memory": "4GB",
+      "readyUrl": "/rest/dmp/component.json",
+      "dockerfile": "docker pull shaktipp/MathCucumberApp-image",
+      "cpu": "2",
+      "attributes": {
+        "dockerfile": "docker pull shaktipp/math-image",
+        "readyUrl": "/rest/dmp/component.json"
+      }
+    },
+    {
+      "kind": "engine",
+      "type": "docker",
+      "env": ["staging", "production"],
+      "scale": false,
+      "disableAutoScaling": true,
+      "additionalStorage": 0,
+      "exclude": [],
+      "envVars": {},
+      "memory": "4GB",
+      "readyUrl": "/rest/dmp/component.json",
+      "dockerfile": "docker pull shaktipp/math-image",
+      "cpu": "2",
+      "attributes": {
+        "dockerfile": "docker pull shaktipp/math-image",
+        "readyUrl": "/rest/dmp/component.json"
+      }
+    }
+  ],
+  "excludeFromUpgrade": []
+}

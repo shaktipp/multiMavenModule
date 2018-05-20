@@ -1,0 +1,32 @@
+URL : http://localhost:8080/customer/addCustomer
+Method : POST
+BODY :
+{
+  "customerAccountNumberList": ["SB1001","SB1002","CR001","CR5005"],
+  "customerAlternateNumber": "9620672500",
+  "customerContactNumber": "08041371800",
+  "customerCreditRating": "A",
+  "customerDateofBirth": "1990-05-15T11:53:38",
+  "customerEmails": "shaktipp@gmail.com;shaktipp@yahoo.com",
+  "customerId": "CUST-001",
+  "customerLoanNumberList": ["Loan12300","Loan12301"],
+  "customerMailingAddress": "202,Kodihali,Gangamma Temple,Bangalore",
+  "customerName": "Shakti",
+  "customerPermanentAddress": "Nayapalli,Bhubaneswar",
+  "customerSex": "M"
+}
+
+{
+  "customerAccountNumberList": ["SB1001","SB1002","CR001","CR5005"],
+  "customerAlternateNumber": "980908080",
+  "customerContactNumber": "08041371789",
+  "customerCreditRating": "A",
+  "customerDateofBirth": "1970-05-15T11:53:38",
+  "customerEmails": "chintu@gmail.com;chintu@yahoo.com",
+  "customerId": "CUST-002",
+  "customerLoanNumberList": ["Loan12300","Loan12301"],
+  "customerMailingAddress": "168,G.M.Palia,Bangalore",
+  "customerName": "Chintu",
+  "customerPermanentAddress": "Sahid Nagr,Bhubaneswar",
+  "customerSex": "M"
+}

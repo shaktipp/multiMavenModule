@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.spp.spring.boot.cloud.jpa.bank</groupId>
+	<artifactId>backendservice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<modules>
+        <module>commonModule</module>
+		<module>bankModule</module>
+        <module>securityModule</module>
+        <module>customerModule</module>
+        <!--<module>originationModule</module>-->
+	</modules>
+	<packaging>pom</packaging>
+
+	<name>backendservice</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<main.basedir>${project.basedir}</main.basedir>
+		<!--<java.version>1.8</java.version>-->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-cloud.version>Finchley.BUILD-SNAPSHOT</spring-cloud.version>
+
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.tests>src/test</sonar.tests>
+		<sonar.sources>pom.xml,src/main/java,src/main/resources,src/test/resources/features</sonar.sources>
+		<!-- Below property indicates the pattern of the test suite -->
+		<runSuite>**/*Test.class</runSuite>
+		<!-- Sonar-JaCoCo properties -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPaths>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPaths>
+		<sonar.language>java</sonar.language>
+		<cucumber-version>1.2.5</cucumber-version>
+		<skip.incremental>true</skip.incremental>
+
+	</properties>
+
+	<dependencies>
+
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- swagger2 -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.8.0</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.8.0</version>
+			</dependency>
+
+			<!-- mysql-connector-java used for mysql connectivity-->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.11</version>
+			</dependency>
+
+			<!--MongoDB Java Driver -->
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>3.7.0</version>
+			</dependency>
+
+			<!--Jackson Datanind -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr310</artifactId>
+				<version>2.9.5</version>
+			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-modules-java8</artifactId>
+                <version>2.9.5</version>
+                <type>pom</type>
+            </dependency>
+
+
+
+            <!--Junit Integrate with spring Boot Test -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+			</dependency>
+
+			<!-- Cucumber -->
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-java</artifactId>
+				<version>${cucumber-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-junit</artifactId>
+				<version>${cucumber-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-spring</artifactId>
+				<version>${cucumber-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>5.0.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.retry</groupId>
+				<artifactId>spring-retry</artifactId>
+				<version>1.2.2.RELEASE</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+
+
+
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
+
+
+		<pluginManagement>
+			<plugins>
+				<!--Used to generate Main Class in Jar File to lunch java JarLauncher -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+							<!--<configuration>
+								<classifier>spring-boot</classifier>
+							</configuration>-->
+						</execution>
+					</executions>
+				</plugin>
+
+
+
+				<!--
+				* The Failsafe Plugin is designed to run integration tests.
+				* The Maven lifecycle has four phases for running integration tests:
+					1) pre-integration-test for setting up the integration test environment.
+					2) integration-test for running the integration tests.
+					3) post-integration-test for tearing down the integration test environment.
+					4) verify for checking the results of the integration tests.
+				* when running integration tests, you should invoke Maven following command
+					mvn verify
+				* The Failsafe Plugin generates reports in two different file formats:
+					1) Plain text files (*.txt)
+					2) XML files (*.xml)
+				* By default, these files are generated in ${basedir}/target/failsafe-reports/TEST-*.xml.
+				-->
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>integration-test</goal>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--
+				* The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application.
+				* It executes JUNIT Test Cases
+				* When running unit tests, you should invoke Maven following command
+					mvn test
+				* It generates reports in two different file formats:
+					1) Plain text files (*.txt)
+					2) XML files (*.xml)
+				* By default, these files are generated in ${basedir}/target/surefire-reports/TEST-*.xml.
+				-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.20</version>
+				</plugin>
+
+				<!--<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>dockerfile-maven-plugin</artifactId>
+					<version>1.4.0</version>
+					<executions>
+						<execution>
+							<id>docker-build</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+								<goal>push</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>-->
+
+				<!-- For Code Coverage Plugin -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.0</version>
+
+					<executions>
+						<execution>
+							<id>agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+                        <execution>
+                            <id>jacoco-check</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+
+                            <configuration>
+                                <rules>
+                                    <rule>
+                                        <element>PACKAGE</element>
+                                        <limits>
+                                            <limit>
+                                                <counter>LINE</counter>
+                                                <value>COVEREDRATIO</value>
+                                                <minimum>0.0</minimum>
+                                            </limit>
+                                        </limits>
+                                    </rule>
+                                </rules>
+                            </configuration>
+
+                        </execution>
+
+					</executions>
+				</plugin>
+
+				<!--Copy spring Bootable JAr to dmp Folder -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+						<execution>
+							<id>copy-SpringBoot-JAR</id>
+							<phase>install</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>dmp</outputDirectory>
+								<overwrite>true</overwrite>
+								<resources>
+									<resource>
+										<directory>${project.build.directory}</directory>
+										<includes>
+											<include>*.jar</include>
+										</includes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+						<execution>
+							<id>copy-dmp-arche-type</id>
+							<phase>install</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${main.basedir}/../assembly/zipFiles</outputDirectory>
+								<overwrite>true</overwrite>
+								<resources>
+									<resource>
+										<directory>${project.build.directory}</directory>
+										<includes>
+											<include>*.zip</include>
+										</includes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>dockerfile-maven-plugin</artifactId>
+					<version>1.4.0</version>
+					<executions>
+						<execution>
+							<id>docker-build</id>
+							<phase>install</phase>
+							<goals>
+								<goal>build</goal>
+								<goal>push</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+						<execution>
+							<id>make-bundles</id>
+							<goals>
+								<goal>single</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<descriptors>
+									<descriptor>${main.basedir}/../assembly/conf/zip-assembly.xml</descriptor>
+								</descriptors>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+</project>
