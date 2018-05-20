@@ -42,10 +42,12 @@ pipeline {
 		}
        
 		
-		stage('Sonar Scan') {
-			steps {
-				sh "mvn sonar:sonar"
-			}
+	stage('Call Remote Pipeline Job') {
+		    steps {
+		          // Call a remote system to start execution, passing a callback url
+                  sh "curl -X POST -H 'Content-Type: application/json' -d '{\"callback\":\"${env.BUILD_URL}input/Async-input/proceedEmpty\"}' http://192.168.252.130:8080/job/ExecuteIT_MultiModule/build?token=17057"
+
+		    }
 		}		
 		
 		
