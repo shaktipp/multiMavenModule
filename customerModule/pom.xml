@@ -240,7 +240,7 @@
 
                 <configuration>
                     <!--related to creating image and pushing it to docker hub-->
-                    <repository>omfico/dmp3</repository>
+                    <repository>shaktipp/dmp3</repository>
                     <tag>Customer</tag>
                     <contextDirectory>${basedir}/dmp</contextDirectory>
                     <retryCount>0</retryCount>

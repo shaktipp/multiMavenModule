@@ -4,8 +4,8 @@ def v_branchName = 'develop'
 def v_cucumberReportPath = '*/**/target/cucumber.json'
 def v_junitReportPath = '*/**/target/surefire-reports/*.xml'
 def v_htmlReportPath = 'target/site/jacoco/'
-def v_successNotification = 'shaktiprasadapanda@fico.com,abhinavgupta@fico.com';
-def v_failNotification = 'shaktiprasadapanda@fico.com,abhinavgupta@fico.com';
+def v_successNotification = 'shaktiprasadapanda@fico.com,shaktipp@gmail.com';
+def v_failNotification = 'shaktiprasadapanda@fico.com,shaktipp@gmail.com';
 
 
 //////////////////////////////////////////////////////////////////////PLEASE DONT MODIFY BELOW SCRIPT   ////////////////////////////////////////////////////////////////////////////
@@ -32,30 +32,6 @@ pipeline {
 			}
 		}
        
-		/*
-		stage('Package and Checkmarx') {
-			steps {
-				
-				step([$class: 'CxScanBuilder', comment: 'Checkmark Static Code Analyss', credentialsId: '', excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'job', failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', filterPattern: 	'''!**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
-				!**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
-				!**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u, !**/*.mid, !**/*.mp3,
-				!**/*.mpa,     !**/*.ra,        !**/*.wav,      !**/*.wma,      !**/*.3g2,     !**/*.3gp, !**/*.asf, !**/*.asx,
-				!**/*.avi,     !**/*.flv,       !**/*.mov,      !**/*.mp4,      !**/*.mpg,     !**/*.rm,  !**/*.swf, !**/*.vob,
-				!**/*.wmv,     !**/*.bmp,       !**/*.gif,      !**/*.jpg,      !**/*.png,     !**/*.psd, !**/*.tif, !**/*.swf,
-				 !**/*.rar,      !**/*.exe,      !**/*.dll,     !**/*.pdb, !**/*.7z,  !**/*.gz,
-				!**/*.tar.gz,  !**/*.tar,       !**/*.gz,       !**/*.ahtm,     !**/*.ahtml,   !**/*.fhtml, !**/*.hdm,
-				!**/*.hdml,    !**/*.hsql,      !**/*.ht,       !**/*.hta,      !**/*.htc,     !**/*.htd, 
-				!**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi, !**/*.stm,
-				!**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/*.iml, !Checkmarx/Reports/*.*''', fullScanCycle: 10, groupId: '77817e0d-9700-46b5-aa44-16b474ba8416', includeOpenSourceFolders: '', jobStatusOnError: 'FAILURE', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', password: '{AQAAABAAAAAQY8vsvHNzrPNGcSmj4kTwzkcy3DupBli81CPJO+Hv6zU=}', preset: '100000', projectName: 'omApmcbMetadataService', serverUrl: 'https://bnpappwis403.corp.fairisaac.com', sourceEncoding: '1', username: '', vulnerabilityThresholdResult: 'FAILURE'])
-
-			}
-		}
-		stage('Cucumber') {
-			steps {
-				sh "mvn verify"
-			}
-		}
-		*/
 		
 		stage('Sonar Scan') {
 			steps {
