@@ -27,13 +27,18 @@ pipeline {
 			}
 		}
 		stage('Compile2Docker Push'){
-            try{
-                    sh "mvn install -DskipITs"
-            }
-            catch(err){
-                currentBuild.result = 'UNSTABLE'
-                throw err
-            }
+            steps{
+                script{
+                    try{
+                        sh "mvn install -DskipITs"
+                    }
+                    catch(err){
+                        currentBuild.result = 'UNSTABLE'
+                        //throw error
+                        throw err
+                    }
+                }//End of script block
+            }//end of steps
 		}
        
 		
