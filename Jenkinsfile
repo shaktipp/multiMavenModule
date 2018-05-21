@@ -30,7 +30,8 @@ pipeline {
             steps{
                 script{
                     try{
-                        sh "mvn install -DskipITs"
+                        //sh "mvn install -DskipITs"
+                        sh "mvn install"
                     }
                     catch(err){
                         currentBuild.result = 'UNSTABLE'
