@@ -1,7 +1,7 @@
 def v_bitBucketUrl = 'https://ShaktiPrasadaPanda@gitserver.fairisaac.com:8443/scm/ompto/apm50.git'
 def v_githubUrl = 'https://github.com/shaktipp/multiMavenModule.git'
 def v_branchName = 'develop'
-def v_cucumberReportPath = '*/**/target/cucumber.json'
+def v_cucumberReportPath = './sppReport/**/cucumber.json'
 def v_junitReportPath = '*/**/target/surefire-reports/*.xml'
 def v_htmlReportPath = 'target/site/jacoco/'
 def v_successNotification = 'shaktiprasadapanda@fico.com,shaktipp@gmail.com';
@@ -30,8 +30,8 @@ pipeline {
             steps{
                 script{
                     try{
-                        //sh "mvn install -DskipITs"
-                        sh "mvn install"
+                        sh "mvn install -DskipITs"
+                        //sh "mvn install"
                     }
                     catch(err){
                         currentBuild.result = 'UNSTABLE'
@@ -42,12 +42,13 @@ pipeline {
             }//end of steps
 		}
        
-		
+		/*
 		stage('Sonar Scan') {
 			steps {
 				sh "mvn sonar:sonar"
 			}
 		}
+		*/
 
         /*
         stage('Call Remote Pipeline Job') {
@@ -66,7 +67,7 @@ pipeline {
 		always {
             //generate cucumber reports
             cucumber "${v_cucumberReportPath}"            
-            junit "${v_junitReportPath}"
+            //junit "${v_junitReportPath}"
             
             /*
             publishHTML( target: [
