@@ -49,6 +49,7 @@ pipeline {
 			}
 		}
 
+        /*
         stage('Call Remote Pipeline Job') {
             steps {
                   // Call a remote system to start execution, passing a callback url
@@ -56,6 +57,7 @@ pipeline {
 
             }
         }
+        */
 		
 		
 
