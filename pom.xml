@@ -278,7 +278,7 @@
 					</executions>
 				</plugin>
 
-				<!--Copy spring Bootable JAr to dmp Folder -->
+				<!--Copy spring Bootable JAR to dmp Folder -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -357,6 +357,22 @@
 									<descriptor>${main.basedir}/../assembly/conf/zip-assembly.xml</descriptor>
 								</descriptors>
 							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--Cucumber Reporting -->
+				<plugin>
+					<groupId>net.masterthought</groupId>
+					<artifactId>maven-cucumber-reporting</artifactId>
+					<version>3.17.1</version>
+					<executions>
+						<execution>
+							<id>execution</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
 						</execution>
 					</executions>
 				</plugin>
