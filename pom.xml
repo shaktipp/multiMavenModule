@@ -361,20 +361,10 @@
 					</executions>
 				</plugin>
 
-				<!--Cucumber Reporting -->
 				<plugin>
 					<groupId>net.masterthought</groupId>
 					<artifactId>maven-cucumber-reporting</artifactId>
-					<version>3.17.1</version>
-					<executions>
-						<execution>
-							<id>execution</id>
-							<phase>post-integration-test</phase>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-						</execution>
-					</executions>
+					<version>3.16.0</version>
 				</plugin>
 
 

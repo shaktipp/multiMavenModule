@@ -240,10 +240,17 @@
                 <artifactId>maven-cucumber-reporting</artifactId>
                 <executions>
                     <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
                         <configuration>
                             <projectName>${project.artifactId}</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                            <enableFlashCharts>true</enableFlashCharts>
+                            <skippedFails>true</skippedFails>
                         </configuration>
                     </execution>
                 </executions>
